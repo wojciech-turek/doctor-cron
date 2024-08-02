@@ -13,7 +13,7 @@ const headers = {
 const payload = new URLSearchParams({
   Url: "/api/FirstAvailableTerms",
   PracticeId: "273fb2e2-3e35-4c47-b241-fd6db0f859dd",
-  EmployeeIds: "7aaed85a-aa08-4bf6-a1d8-2628be25546e",
+  EmployeeIds: "e2bce552-5bd2-4fa5-8b16-925fd657dfbf",
   AfterDate: new Date().toISOString(),
   MaxTermsCount: "144",
   IsReceptionist: "true",
@@ -41,9 +41,13 @@ async function checkApiAndSendEmail() {
 
       await resend.emails.send({
         from: "Cron Doctor <notify@27chains.com>",
-        to: [process.env.RECIPIENT_EMAIL1, process.env.RECIPIENT_EMAIL2],
+        to: [process.env.RECIPIENT_EMAIL1],
         subject: "hello world",
-        text: "it works!",
+        text: data
+          .map((term) => {
+            return `Dostępny termin: ${term.Day.slice(0, 10)} ${term.StarTime}`;
+          })
+          .join("\n"),
       });
 
       console.log("Email sent successfully.");
