@@ -40,7 +40,7 @@ async function checkApiAndSendEmail() {
       console.log("Non-empty response, sending email...");
 
       await resend.emails.send({
-        from: "Cron Doctor <onboarding@resend.dev>",
+        from: "Cron Doctor <notify@27chains.com>",
         to: [process.env.RECIPIENT_EMAIL1, process.env.RECIPIENT_EMAIL2],
         subject: "hello world",
         text: "it works!",
@@ -57,7 +57,7 @@ async function checkApiAndSendEmail() {
 
 // Schedule the script to run every 5 minutes
 const job = new CronJob(
-  "*/10 * * * *",
+  "*/1 * * * *",
   checkApiAndSendEmail,
   null,
   true,

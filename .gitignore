@@ -12,6 +12,11 @@ yarn-error.log*
 # Dependency directories
 jspm_packages/
 
+# TypeScript output
+dist/
+out/
+build/
+
 # Environment variables
 .env
 
