@@ -42,7 +42,7 @@ async function checkApiAndSendEmail() {
       await resend.emails.send({
         from: "Cron Doctor <notify@27chains.com>",
         to: [process.env.RECIPIENT_EMAIL1],
-        subject: "hello world",
+        subject: "Dostępne terminy w przychodni",
         text: data
           .map((term) => {
             return `Dostępny termin: ${term.Day.slice(0, 10)} ${term.StarTime}`;
