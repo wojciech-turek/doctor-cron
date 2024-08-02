@@ -45,7 +45,9 @@ async function checkApiAndSendEmail() {
         subject: "Dostępne terminy w przychodni",
         text: data
           .map((term) => {
-            return `Dostępny termin: ${term.Day.slice(0, 10)} ${term.StarTime}`;
+            return `Dostępny termin: ${term.Day.slice(0, 10)} ${
+              term.StartTime
+            }`;
           })
           .join("\n"),
       });
@@ -61,7 +63,7 @@ async function checkApiAndSendEmail() {
 
 // Schedule the script to run every 5 minutes
 const job = new CronJob(
-  "*/1 * * * *",
+  "*/10 * * * *",
   checkApiAndSendEmail,
   null,
   true,
