@@ -57,7 +57,7 @@ async function checkApiAndSendEmail() {
 
 // Schedule the script to run every 5 minutes
 const job = new CronJob(
-  "*/5 * * * *",
+  "*/10 * * * *",
   checkApiAndSendEmail,
   null,
   true,
