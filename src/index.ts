@@ -1,5 +1,4 @@
 import axios from "axios";
-import { CronJob } from "cron";
 import "dotenv/config";
 import { Resend } from "resend";
 
@@ -61,12 +60,15 @@ async function checkApiAndSendEmail() {
   }
 }
 
-// Schedule the script to run every 5 minutes
-const job = new CronJob(
-  "*/10 * * * *",
-  checkApiAndSendEmail,
-  null,
-  true,
-  "Europe/Warsaw"
-);
-job.start();
+// Schedule the script to run every 5 minutes locally
+// const job = new CronJob(
+//   "*/10 * * * *",
+//   checkApiAndSendEmail,
+//   null,
+//   true,
+//   "Europe/Warsaw"
+// );
+// job.start();
+
+// Run the script once
+checkApiAndSendEmail();
